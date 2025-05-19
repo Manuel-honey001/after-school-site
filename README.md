@@ -164,7 +164,7 @@ inscriptions.htlm
   </form>
 
   <p>
-    <a href="AFTER SCHOOL insription.html">&#8592; Retour à l'accueil</a>
+    <a href="https://manuel-honey001.github.io/SORTIE/">&#8592; Retour à l'accueil</a>
   </p>
 
   <script>
