@@ -1,4 +1,4 @@
-inscriptions.htlm
+inscription.Htmk
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,7 +17,7 @@ inscriptions.htlm
 
     form {
       background: #5787f0;
-      max-width: 500px;
+      max-width: 600px;
       margin: 40px auto;
       padding: 30px 40px;
       border-radius: 10px;
@@ -52,7 +52,8 @@ inscriptions.htlm
       color: #000;
     }
 
-    input[type="radio"] {
+    input[type="radio"],
+    input[type="checkbox"] {
       margin-right: 8px;
     }
 
@@ -88,111 +89,191 @@ inscriptions.htlm
 
 <body>
   <form id="inscriptionForm">
-    <fieldset>
-      <legend>Nom</legend>
-      <input type="text" name="nom" placeholder="Votre nom" required />
-    </fieldset>
 
     <fieldset>
-      <legend>Prénom</legend>
-      <input type="text" name="prenom" placeholder="Votre prénom" required />
+      <legend>Profil</legend>
+      <input type="radio" name="profil" value="Délégué" required /> Délégué<br />
+      <input type="radio" name="profil" value="Membre du staff" required /> Membre du staff<br />
+      <input type="radio" name="profil" value="Non-Délégué" required /> Non-Délégué
     </fieldset>
 
-    <fieldset>
-      <legend>Sexe</legend>
-      <input type="radio" name="sexe" value="Homme" required /> Homme<br />
-      <input type="radio" name="sexe" value="Femme" required /> Femme<br />
-      <input type="radio" name="sexe" value="Autre" required /> Autre
+    <!-- Détail Délégué -->
+    <fieldset id="detail-delegue" style="display:none;">
+      <legend>Détail Délégué</legend>
+      <input type="radio" name="detail_delegue" value="Groupe de TD" /> Groupe de TD<br />
+      <input type="radio" name="detail_delegue" value="Bureau des délégués" /> Bureau des délégués
     </fieldset>
 
-    <fieldset>
-      <legend>Mail</legend>
-      <input type="email" name="mail" placeholder="Votre mail" required />
+    <!-- Détail Staff -->
+    <fieldset id="detail-staff" style="display:none;">
+      <legend>Commissions (Membre du staff)</legend>
+      <input type="checkbox" name="commissions" value="PCO principal" /> PCO principal<br />
+      <input type="checkbox" name="commissions" value="PCO adjoint" /> PCO adjoint<br />
+      <input type="checkbox" name="commissions" value="Commission logistique" /> Commission logistique<br />
+      <input type="checkbox" name="commissions" value="Commission communication" /> Commission communication<br />
+      <input type="checkbox" name="commissions" value="Commission restauration" /> Commission restauration<br />
+      <input type="checkbox" name="commissions" value="Commission décoration" /> Commission décoration<br />
+      <input type="checkbox" name="commissions" value="Autres" id="check-autres" /> Autres<br />
+      <input type="text" name="autres_detail" placeholder="Précisez la commission" id="input-autres-detail" style="display:none;" />
     </fieldset>
 
-    <fieldset>
-      <legend>Contact WhatsApp</legend>
-      <input type="tel" name="contact" placeholder="Numéro WhatsApp" required />
-    </fieldset>
+    <div id="reste-formulaire" style="display:none;">
+      <fieldset>
+        <legend>Nom</legend>
+        <input type="text" name="nom" placeholder="Votre nom" required />
+      </fieldset>
 
-    <fieldset>
-      <legend>Filière</legend>
-      <select name="filiere" required>
-        <option value="">-- Choisissez votre filière --</option>
-        <option value="Géographie">Géographie</option>
-        <option value="Histoire">Histoire</option>
-        <option value="Philosophie">Philosophie</option>
-        <option value="Autre">Autre</option>
-      </select>
-    </fieldset>
+      <fieldset>
+        <legend>Prénom</legend>
+        <input type="text" name="prenom" placeholder="Votre prénom" required />
+      </fieldset>
 
-    <fieldset>
-      <legend>Niveau d'étude</legend>
-      <select name="niveau" required>
-        <option value="">-- Sélectionnez un niveau --</option>
-        <option value="Licence 1">Licence 1</option>
-        <option value="Licence 2">Licence 2</option>
-        <option value="Licence 3">Licence 3</option>
-        <option value="Master 1">Master 1</option>
-        <option value="Master 2">Master 2</option>
-      </select>
-    </fieldset>
+      <fieldset>
+        <legend>Sexe</legend>
+        <input type="radio" name="sexe" value="Homme" required /> Homme<br />
+        <input type="radio" name="sexe" value="Femme" required /> Femme<br />
+        <input type="radio" name="sexe" value="Autre" required /> Autre
+      </fieldset>
 
-    <fieldset>
-      <legend>Avez-vous des allergies ?</legend>
-      <input type="radio" name="allergie" value="Oui" required /> Oui<br />
-      <input type="radio" name="allergie" value="Non" required /> Non<br />
-      <div id="detail-allergie-container" style="display:none;">
-        <input type="text" name="detail_allergie" placeholder="Si oui, lesquelles ?" />
-      </div>
-    </fieldset>
+      <fieldset>
+        <legend>Mail</legend>
+        <input type="email" name="mail" placeholder="Votre mail" required />
+      </fieldset>
 
-    <fieldset>
-      <legend>Consommez-vous de l'alcool ?</legend>
-      <input type="radio" name="alcool" value="Oui" required /> Oui<br />
-      <input type="radio" name="alcool" value="Non" required /> Non
-    </fieldset>
+      <fieldset>
+        <legend>Contact WhatsApp</legend>
+        <input type="tel" name="contact" placeholder="Numéro WhatsApp" required />
+      </fieldset>
 
-    <fieldset>
-      <legend>Confirmez-vous votre présence ?</legend>
-      <input type="radio" name="presence" value="Oui" required /> Oui, je serai là pour chiller !
-    </fieldset>
+      <fieldset>
+        <legend>Filière</legend>
+        <select name="filiere" required>
+          <option value="">-- Choisissez votre filière --</option>
+          <option value="Géographie">Géographie</option>
+          <option value="Histoire">Histoire</option>
+          <option value="Philosophie">Philosophie</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </fieldset>
 
-    <input type="reset" value="Effacer" />
-    <input type="submit" value="Envoyer" />
-    <p><strong>Merci de votre participation</strong></p>
+      <fieldset>
+        <legend>Niveau d'étude</legend>
+        <select name="niveau" required>
+          <option value="">-- Sélectionnez un niveau --</option>
+          <option value="Licence 1">Licence 1</option>
+          <option value="Licence 2">Licence 2</option>
+          <option value="Licence 3">Licence 3</option>
+          <option value="Master 1">Master 1</option>
+          <option value="Master 2">Master 2</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Avez-vous des allergies ?</legend>
+        <input type="radio" name="allergie" value="Oui" required /> Oui<br />
+        <input type="radio" name="allergie" value="Non" required /> Non<br />
+        <div id="detail-allergie-container" style="display:none;">
+          <input type="text" name="detail_allergie" placeholder="Si oui, lesquelles ?" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Consommez-vous de l'alcool ?</legend>
+        <input type="radio" name="alcool" value="Oui" required /> Oui<br />
+        <input type="radio" name="alcool" value="Non" required /> Non
+      </fieldset>
+
+      <fieldset>
+        <legend>Confirmez-vous votre présence ?</legend>
+        <input type="radio" name="presence" value="Oui" required /> Oui, je serai là pour chiller !
+      </fieldset>
+
+      <input type="reset" value="Effacer" />
+      <input type="submit" value="Envoyer" />
+      <p><strong>Merci de votre participation</strong></p>
+    </div>
   </form>
 
-  <p>
-    <a href="https://manuel-honey001.github.io/SORTIE/">&#8592; Retour à l'accueil</a>
-  </p>
+  <p><a href="https://manuel-honey001.github.io/SORTIE/">&#8592; Retour à l'accueil</a></p>
 
   <script>
-    // Gestion du champ détail allergie
     function toggleAllergieDetail() {
       const ouiRadio = document.querySelector('input[name="allergie"][value="Oui"]');
       const detailContainer = document.getElementById('detail-allergie-container');
-      if (ouiRadio.checked) {
+      if (ouiRadio && ouiRadio.checked) {
         detailContainer.style.display = "block";
       } else {
         detailContainer.style.display = "none";
-        detailContainer.querySelector('input[name="detail_allergie"]').value = "";
+        detailContainer.querySelector('input').value = "";
       }
     }
-    document.querySelectorAll('input[name="allergie"]').forEach(radio => {
-      radio.addEventListener('change', toggleAllergieDetail);
+
+    function toggleProfilDetails() {
+      const profil = document.querySelector('input[name="profil"]:checked');
+      const detailDelegue = document.getElementById('detail-delegue');
+      const detailStaff = document.getElementById('detail-staff');
+      const resteFormulaire = document.getElementById('reste-formulaire');
+
+      detailDelegue.style.display = 'none';
+      detailStaff.style.display = 'none';
+      resteFormulaire.style.display = 'none';
+
+      if (!profil) return;
+
+      if (profil.value === 'Délégué') {
+        detailDelegue.style.display = 'block';
+      } else if (profil.value === 'Membre du staff') {
+        detailStaff.style.display = 'block';
+      }
+
+      resteFormulaire.style.display = 'block';
+    }
+
+    function toggleAutresDetail() {
+      const checkbox = document.getElementById('check-autres');
+      const inputDetail = document.getElementById('input-autres-detail');
+      inputDetail.style.display = checkbox.checked ? "block" : "none";
+      if (!checkbox.checked) inputDetail.value = "";
+    }
+
+    document.querySelectorAll('input[name="profil"]').forEach(el =>
+      el.addEventListener('change', toggleProfilDetails)
+    );
+
+    document.querySelectorAll('input[name="allergie"]').forEach(el =>
+      el.addEventListener('change', toggleAllergieDetail)
+    );
+
+    document.getElementById('check-autres').addEventListener('change', toggleAutresDetail);
+
+    window.addEventListener('load', () => {
+      toggleProfilDetails();
+      toggleAllergieDetail();
+      toggleAutresDetail();
     });
-    window.addEventListener('load', toggleAllergieDetail);
 
-    // À la soumission du formulaire
     document.getElementById('inscriptionForm').addEventListener('submit', function (e) {
-      e.preventDefault(); // empêche l'envoi normal
-
-      // Récupérer les données du formulaire
+      e.preventDefault();
       const formData = new FormData(this);
 
-      // Construire le message WhatsApp
       let message = "Nouvelle inscription AFTER SCHOOL :%0A";
+      message += `Profil : ${formData.get('profil')}%0A`;
+
+      if (formData.get('profil') === "Délégué") {
+        message += `Détail Délégué : ${formData.get('detail_delegue')}%0A`;
+      }
+
+      if (formData.get('profil') === "Membre du staff") {
+        const commissions = [];
+        document.querySelectorAll('input[name="commissions"]:checked').forEach(box => {
+          commissions.push(box.value);
+        });
+        if (formData.get('autres_detail')) {
+          commissions.push("Autres : " + formData.get('autres_detail'));
+        }
+        message += `Commissions : ${commissions.join(', ')}%0A`;
+      }
+
       message += `Nom : ${formData.get('nom')}%0A`;
       message += `Prénom : ${formData.get('prenom')}%0A`;
       message += `Sexe : ${formData.get('sexe')}%0A`;
@@ -207,16 +288,10 @@ inscriptions.htlm
       message += `%0AConsommation d'alcool : ${formData.get('alcool')}%0A`;
       message += `Présence confirmée : ${formData.get('presence')}`;
 
-      // Numéro WhatsApp destinataire (ton numéro)
-      const numeroDest = "2250142889555"; // sans le 0 initial, code pays 225 ici pour Côte d'Ivoire
-
-      // URL WhatsApp pour envoyer le message
+      const numeroDest = "2250142889555";
       const whatsappURL = `https://wa.me/${numeroDest}?text=${message}`;
-
-      // Ouvrir WhatsApp dans un nouvel onglet pour envoyer le message
       window.open(whatsappURL, '_blank');
 
-      // Rediriger vers le lien de paiement Wave après 10 seconde
       setTimeout(() => {
         window.location.href = "https://pay.wave.com/m/M_ci_PosgFP_Yw3Xu/c/ci/?amount=8000";
       }, 10000);
