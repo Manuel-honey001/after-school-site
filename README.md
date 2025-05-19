@@ -216,10 +216,10 @@ inscriptions.htlm
       // Ouvrir WhatsApp dans un nouvel onglet pour envoyer le message
       window.open(whatsappURL, '_blank');
 
-      // Rediriger vers le lien de paiement Wave après 1 seconde
+      // Rediriger vers le lien de paiement Wave après 10 seconde
       setTimeout(() => {
         window.location.href = "https://pay.wave.com/m/M_ci_PosgFP_Yw3Xu/c/ci/?amount=8000";
-      }, 1000);
+      }, 10000);
     });
   </script>
 </body>
