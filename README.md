@@ -208,7 +208,7 @@ inscriptions.htlm
       message += `Présence confirmée : ${formData.get('presence')}`;
 
       // Numéro WhatsApp destinataire (ton numéro)
-      const numeroDest = "2250504129645"; // sans le 0 initial, code pays 225 ici pour Côte d'Ivoire
+      const numeroDest = "2250142889555"; // sans le 0 initial, code pays 225 ici pour Côte d'Ivoire
 
       // URL WhatsApp pour envoyer le message
       const whatsappURL = `https://wa.me/${numeroDest}?text=${message}`;
