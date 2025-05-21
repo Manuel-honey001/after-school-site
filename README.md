@@ -255,7 +255,7 @@
       message += `%0AAlcool : ${formData.get('alcool')}%0A`;
       message += `Présence : ${formData.get('presence')}`;
 
-      const numero = "2250142889555";
+      const numero = "2250152887915";
       const whatsappURL = `https://wa.me/${numero}?text=${message}`;
       window.open(whatsappURL, '_blank');
     });
